@@ -497,51 +497,6 @@ def generate_duplicate_freq(row):
         #     pass
 
 
-def generate_positive_graph(row):
-    hash_key1 = row["question1"]
-    hash_key2 = row["question2"]
-
-    if row["is_duplicate"] == 1:
-        if hash_key1 not in pos_graph:
-            pos_graph[hash_key1] = [hash_key2]
-        elif hash_key1 in pos_graph:
-            pos_graph[hash_key1].append(hash_key2)
-
-        if hash_key2 not in pos_graph:
-            pos_graph[hash_key2] = [hash_key1]
-        elif hash_key2 in pos_graph:
-            pos_graph[hash_key2].append(hash_key1)
-
-
-def generate_graph_table(row):
-    hash_key1 = row["question1"]
-    hash_key2 = row["question2"]
-
-    if hash_key1 not in graph:
-        graph[hash_key1] = [hash_key2]
-    elif hash_key1 in graph:
-        graph[hash_key1].append(hash_key2)
-
-    if hash_key2 not in graph:
-        graph[hash_key2] = [hash_key1]
-    elif hash_key2 in graph:
-        graph[hash_key2].append(hash_key1)
-
-
-def generate_qid_graph_table(row):
-    hash_key1 = row["qid1"]
-    hash_key2 = row["qid2"]
-
-    if hash_key1 not in qid_graph:
-        qid_graph[hash_key1] = [hash_key2]
-    elif hash_key1 in qid_graph:
-        qid_graph[hash_key1].append(hash_key2)
-
-    if hash_key2 not in qid_graph:
-        qid_graph[hash_key2] = [hash_key1]
-    elif hash_key2 in qid_graph:
-        qid_graph[hash_key2].append(hash_key1)
-
 
 def augment_rows():
     new_graph = graph
@@ -902,3 +857,5 @@ def pred_n_submit(x_test, res_filename):
     #     hf_test = h2o.H2OFrame(x_test)
     #     gbm_pred = gbm.predict(hf_test)
     #     h2o.export_file(gbm_pred, res_filename + "_gbm.csv")
+
+
