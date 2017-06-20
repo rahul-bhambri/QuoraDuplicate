@@ -122,7 +122,7 @@ def make_nx_graph(df_train, df_test):
     return g
 
 
-def get_weighted_edge_score(row, weights):
+def get_weighted_edge_score(row):
     q1_words = row["question1"].lower().split()
     q2_words = row["question2"].lower().split()
 
@@ -139,7 +139,7 @@ def get_weighted_edge_score(row, weights):
     return common_words_score / all_words_score
 
 
-def generate_edge_scores(row, edge_weights):
+def generate_edge_scores(row):
     node1 = row["qid1"]
     node2 = row["qid2"]
 
