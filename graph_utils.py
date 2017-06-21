@@ -110,16 +110,6 @@ def generate_qid_graph_table(row, qid_graph):
         qid_graph[hash_key2].append(hash_key1)
 
 
-def make_nx_graph(df_train, df_test):
-    df = pd.concat([df_train, df_test])
-
-    g = nx.Graph()
-    g.add_nodes_from(df.qid1)
-
-    edges = list(df[['qid1', 'qid2']].to_records(index=False))
-    g.add_edges_from(edges)
-    g.remove_edges_from(g.selfloop_edges())
-    return g
 
 
 def get_weighted_edge_score(row):
