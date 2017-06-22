@@ -145,20 +145,7 @@ def generate_edge_scores(row):
     edge_weights[node2][node1] = edge_weight
 
 
-def pagerank_neighbor_features(row, graph, pr):
-    q1_neighbors = graph[row["question1"]]
-    q2_neighbors = graph[row["question2"]]
 
-    common_neighbors = set(q1_neighbors).intersection(q2_neighbors)
-
-    common_neighbors_pr = sum([pr[j] for j in common_neighbors])
-    q1_neighbors_pr = sum([pr[j] for j in q1_neighbors])
-    q2_neighbors_pr = sum([pr[j] for j in q2_neighbors])
-
-    if q1_neighbors_pr + q2_neighbors_pr - common_neighbors_pr == 0:
-        return 0
-    else:
-        return common_neighbors_pr / (q1_neighbors_pr + q2_neighbors_pr - common_neighbors_pr)
 
 
 def weighted_neighbor_features(row, qid_graph, edge_weights):
